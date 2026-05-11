@@ -1,0 +1,7 @@
+services:
+  apache:
+    image: httpd:latest
+    ports:
+      - '8011:80'
+    volumes:
+      - './index.html:/usr/local/apache2/htdocs/index.html'
