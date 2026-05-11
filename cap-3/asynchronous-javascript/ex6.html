@@ -1,0 +1,38 @@
+<!-- Crie uma página HTML que carregue os dados dos
+    usuários de uma API e liste na tela.
+    Utilize a função fetch() para obter a lista de
+    usuários.
+    Utilize a função de ordem superior forEach para
+    iterar pelos usuários. -->
+
+<!DOCTYPE html>
+<html lang = "pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Exercício 6 - API</title>
+    </head>
+    <body>
+        <h1>Async API Call</h1>
+        <button id="btnList">List Users</button>
+        <ul id="userList"></ul>
+
+        <script>
+            const button = document.getElementById('btnList');
+            const listContainer = document.getElementById('userList');
+
+            button.addEventListener('click', () => { // adiciona um ouvinte de evento ao botão. Ao clicar, dispara a lógica assíncrona -> permitindo que a página não seja bloqueada enquanto aguarda os dados.
+                fetch('https://jsonplaceholder.typicode.com/users/') // requisição http ao endpoint. função retora uma Promise -> sucesso ou falha da operação assíncrona.
+                    .then(response => response.json()) // then() (ouvinte de sucesso de Promise) recebe a resposta bruta e convertemos em um objeto JSON, gerando uma nova Promise.
+                    .then(users => { // Quando a API termina de enviar os dados e o JS termina de converter em JSON, executa. `users` contém o array de objetos que veio do servidor.
+                        listContainer.innerHTML = ''; // limpa o conteúdo do elemento HTML (nesse caso a lista <ul>) antes de escrever.
+                        users.forEach(user => { // iterar sobre cada usuário.
+                            const li = document.createElement('li'); // cria um novo elemento da lista dinamicamente para cada usuário processado.
+                            li.innerText = `${user.id} - ${user.name}`; // inserir o `id` e o `nome` no formato solicitado ("1 - Leanne Graham").
+                            listContainer.appendChild(li); // Pega a linha da lista <li> e append no container principal <ul>.
+                        });
+                    })
+                    .catch(error => console.error('Erro: ', error)); // centraliza o controle de erros (ouvinte de falha de Promise).
+            });
+        </script>
+    </body>
+</html>
