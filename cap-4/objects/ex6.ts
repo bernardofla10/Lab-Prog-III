@@ -6,14 +6,14 @@
 interface Produto {
     nome: string;
     preco: number;
-    desconto?: number;
+    desconto?: number; // propriedade opcional (?)
 }
 
 const calcularPrecoFinal = (produto: Produto): number => {
-    if (produto.desconto !== undefined) {
-        return produto.preco - produto.desconto;
+    if (produto.desconto !== undefined) { // se houver desconto, subtrai o desconto.
+        return produto.preco - produto.desconto; 
     }
-    return produto.preco;
+    return produto.preco; // se não, preço inteiro.
 };
 
 // Exemplos de uso:
