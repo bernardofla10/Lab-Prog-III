@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Somador Reativo - JS Puro</title>
+  
+  <style>
+    .somador-container {
+      font-family: Arial, sans-serif;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px;
+    }
+
+    input {
+      width: 60px;
+      font-size: 1rem;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="somador-container">
+    <input type="number" id="valorA" value="0" />
+    <span> + </span>
+    <input type="number" id="valorB" value="0" />
+    <span> = </span>
+    <span id="resultado">0</span>
+  </div>
+
+  <script>
+    // 1. Definição do Estado (Single Source of Truth)
+    const estado = {
+      a: 0,
+      b: 0
+    };
+
+    // 2. Captura dos elementos do DOM
+    const inputA = document.getElementById('valorA');
+    const inputB = document.getElementById('valorB');
+    const spanResultado = document.getElementById('resultado');
+
+    // 3. Função de Renderização (A UI é consequência do estado)
+    function render() {
+      const soma = estado.a + estado.b;
+      spanResultado.textContent = soma.toString();
+    }
+
+    // 4. Mapeamento de Eventos (Atualização do estado)
+    inputA.addEventListener('input', function(evento) {
+      estado.a = Number(evento.target.value) || 0;
+      render();
+    });
+
+    inputB.addEventListener('input', function(evento) {
+      estado.b = Number(evento.target.value) || 0;
+      render();
+    });
+  </script>
+
+</body>
+</html>
