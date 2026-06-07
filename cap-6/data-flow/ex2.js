@@ -1,3 +1,7 @@
+// Crie o aplicativo ao lado que calcula o número de Fibonacci de um dado número N
+// Inclua os componentes Image, TextInput, Button e Text
+// Os valores da entrada N e de FibN devem ser salvos no estado da aplicação
+
 import { useState } from 'react';
 import {
   Button,

@@ -1,3 +1,7 @@
+// Crie o aplicativo ao lado que mostra dois contadores
+// Inclua os componentes Text (título e número) e um Button para cada contador
+// O valor do contador deve ser salvo no estado de cada componente
+
 import { useState } from 'react';
 import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 

@@ -1,3 +1,7 @@
+// Crie o aplicativo ao lado que mostra um contador
+// Inclua os componentes Text (título e número), e um Button
+// O valor do contador deve ser salvo e carregado do estado da aplicação
+
 import { useState } from 'react'; // importa o hook useState, ferramenta padrão para gerenciar estados locais dentro de componentes funcionais.
 import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native'; // importa os componentes visuais básicos nativos do react native.
 

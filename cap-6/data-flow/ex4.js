@@ -1,37 +1,41 @@
+// Atualize o aplicativo anterior com os seguintes requisitos:
+// - Inclua um botão para zerar o contador em cadacomponente
+// - Inclua um contador global com o valor da soma dos doiscontadores
+
 import { useState } from 'react';
 import {
-  Pressable,
+  Pressable, // botão customizável.
   SafeAreaView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 
-function ActionButton({ title, color, onPress }) {
+function ActionButton({ title, color, onPress }) {  // componente de botão. Recebe três props (title, color, onPress).
   return (
-    <Pressable style={[styles.button, { backgroundColor: color }]} onPress={onPress}>
-      <Text style={styles.buttonText}>{title}</Text>
+    <Pressable style={[styles.button, { backgroundColor: color }]} onPress={onPress}> {/* Cria o botão, aplica o estilo padrão styles.button e também a cor recebida por prop. */}
+      <Text style={styles.buttonText}>{title}</Text> {/* texto do botão é o título escrito nele. */}
     </Pressable>
   );
 }
 
-function Contador({ name, count, onCount, onReset }) {
+function Contador({ name, count, onCount, onReset }) { // componente de contador. Recebe quatro props (name, count, onCount, onReset).
   return (
     <View style={styles.counterContainer}>
       <Text style={styles.counterText}>{name}: {count}</Text>
 
       <View style={styles.buttonRow}>
-        <ActionButton title="CONTAR" color="#43a047" onPress={onCount} />
-        <ActionButton title="ZERAR" color="#f44336" onPress={onReset} />
+        <ActionButton title="CONTAR" color="#43a047" onPress={onCount} /> {/* botão com a função para contar (somar) */}
+        <ActionButton title="ZERAR" color="#f44336" onPress={onReset} /> {/* botão com a função para resetar (zerar) */}
       </View>
     </View>
   );
 }
 
-export default function App() {
-  const [countA, setCountA] = useState(0);
-  const [countB, setCountB] = useState(0);
-  const total = countA + countB;
+export default function App() { // declara o componente principal do aplicativo.
+  const [countA, setCountA] = useState(0); // cria o estado do contador A.
+  const [countB, setCountB] = useState(0); // cria o estado do contador B.
+  const total = countA + countB; // calcula a soma dos dois contadores para a soma total.
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -43,14 +47,14 @@ export default function App() {
           count={countA}
           onCount={() => setCountA((currentCount) => currentCount + 1)}
           onReset={() => setCountA(0)}
-        />
+        /> {/* Renderiza o contador A, recebe o valor countA, uma função para incrementar e uma para zerar. */}
 
         <Contador
           name="Contador B"
           count={countB}
           onCount={() => setCountB((currentCount) => currentCount + 1)}
           onReset={() => setCountB(0)}
-        />
+        /> {/* Renderiza o contador B, recebe o valor countB, uma função para incrementar e uma para zerar. */}
       </View>
     </SafeAreaView>
   );
