@@ -34,26 +34,26 @@
 
   <script>
     // 1. Definição do Estado (Single Source of Truth)
-    const estado = {
+    const estado = { // guarda os valores reais usados na soma
       a: 0,
       b: 0
     };
 
     // 2. Captura dos elementos do DOM
-    const inputA = document.getElementById('valorA');
+    const inputA = document.getElementById('valorA'); // busca no html o elemento com id="valorA" e guarda em inputA.
     const inputB = document.getElementById('valorB');
     const spanResultado = document.getElementById('resultado');
 
     // 3. Função de Renderização (A UI é consequência do estado)
-    function render() {
+    function render() { // cria função render responsável por atualizar o resultado na tela.
       const soma = estado.a + estado.b;
-      spanResultado.textContent = soma.toString();
+      spanResultado.textContent = soma.toString(); // transforma o número em string pois textContent espera string.
     }
 
     // 4. Mapeamento de Eventos (Atualização do estado)
-    inputA.addEventListener('input', function(evento) {
-      estado.a = Number(evento.target.value) || 0;
-      render();
+    inputA.addEventListener('input', function(evento) { // evento input acontece sempre o usuário digita ou altera o valor.
+      estado.a = Number(evento.target.value) || 0; // pega o valor digitado, converte para número e salva em estado.a. se falhar, usa 0.
+      render(); // atualiza o resultado na tela.
     });
 
     inputB.addEventListener('input', function(evento) {
