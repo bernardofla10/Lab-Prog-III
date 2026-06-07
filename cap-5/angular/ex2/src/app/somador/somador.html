@@ -1,0 +1,40 @@
+<div class="somador-container">
+  <input type="text" inputmode="decimal" [(ngModel)]="valorA" aria-label="Primeiro valor">
+  <span>+</span>
+  <input type="text" inputmode="decimal" [(ngModel)]="valorB" aria-label="Segundo valor">
+  <span>=</span>
+  <label>{{ resultado }}</label> 
+</div>
+
+<!-- no JS Puro, devemos buscar os elementos do HTML no código JS:
+
+const inputA = document.getElementById('valorA');
+const inputB = document.getElementById('valorB');
+const spanResultado = document.getElementById('resultado'); 
+
+no Angular, ligamos o input diretamente à variável:
+
+<input [(ngModel)]="valorA">
+<input [(ngModel)]="valorB">
+
+O Angular cuida da conexão HTML e TS.
+
+No JS Puro, precisamos de addEventListener para escutar os eventos manualmente e atualizar o valor de A e B.
+No Angular, [(ngModel)] atualiza valorA e valorB automaticamente quando o usuário digita.
+
+O {{ resultado }} é interpolação. O Angular lê esse valor e atualiza a tela quando o estado muda. Não precisa de render ().
+
+No JS Puro, o fluxo é:
+  usuário digita
+  → evento input dispara
+  → código atualiza estado
+  → código chama render()
+  → render muda o span
+
+No Angular, o fluxo é:
+  usuário digita
+  → ngModel atualiza valorA ou valorB
+  → Angular percebe a mudança
+  → resultado é recalculado
+  → tela é atualizada
+-->
